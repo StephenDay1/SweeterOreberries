@@ -7,12 +7,10 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -28,8 +26,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.ninjatek155.sweeteroreberries.setup.ModBlocks;
-import net.ninjatek155.sweeteroreberries.setup.ModDamageSource;
+import net.ninjatek155.sweeteroreberries.setup.ModDamageSources;
 
 import java.util.Random;
 
@@ -42,7 +39,7 @@ public class OreberryBushBlock extends BushBlock {
 
     private final Item berryItem;
     public OreberryBushBlock(Item berryItem) {
-        super(Properties.of(Material.PLANT).randomTicks().noCollission().sound(SoundType.STONE));
+        super(Properties.of(Material.STONE).strength(4f).randomTicks().noCollission().sound(SoundType.STONE));
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
 
         this.berryItem = berryItem;
@@ -57,8 +54,8 @@ public class OreberryBushBlock extends BushBlock {
         int i = blockState.getValue(AGE);
         boolean flag = i == MAX_AGE;
         if (i > 1) {
-            int j = 1 + level.random.nextInt(2);
-            popResource(level, blockPos, new ItemStack(berryItem, j + (flag ? 1 : 0)));
+            int j = 1;
+            popResource(level, blockPos, new ItemStack(berryItem, j + (flag ? level.random.nextInt(2) : 0)));
             level.playSound((Player)null, blockPos, SoundEvents.STONE_STEP, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
             BlockState blockstate = blockState.setValue(AGE, 1);
             level.setBlock(blockPos, blockstate, 2);
@@ -148,7 +145,7 @@ public class OreberryBushBlock extends BushBlock {
                 double d0 = Math.abs(entity.getX() - entity.xOld);
                 double d1 = Math.abs(entity.getZ() - entity.zOld);
                 if (d0 >= (double) HURT_SPEED_THRESHOLD || d1 >= (double) HURT_SPEED_THRESHOLD) {
-                    entity.hurt(ModDamageSource.OREBERRY_BUSH, 1.0F);
+                    entity.hurt(ModDamageSources.OREBERRY_BUSH, 1.0F);
                 }
             }
         }

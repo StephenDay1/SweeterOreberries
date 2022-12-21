@@ -11,11 +11,11 @@ import java.util.function.Supplier;
 
 public class ModBlocks {
     public static final RegistryObject<OreberryBushBlock> IRON_OREBERRY_BUSH_BLOCK = register("iron_oreberry_bush",
-            () -> new OreberryBushBlock(Items.RAW_IRON), ModItems.getBasicModItemProperties());
+            () -> new OreberryBushBlock(Items.RAW_IRON), getBasicModItemProperties());
     public static final RegistryObject<OreberryBushBlock> COPPER_OREBERRY_BUSH_BLOCK = register("copper_oreberry_bush",
-            () -> new OreberryBushBlock(Items.RAW_COPPER), ModItems.getBasicModItemProperties());
+            () -> new OreberryBushBlock(Items.RAW_COPPER), getBasicModItemProperties());
     public static final RegistryObject<OreberryBushBlock> GOLD_OREBERRY_BUSH_BLOCK = register("gold_oreberry_bush",
-            () -> new OreberryBushBlock(Items.RAW_GOLD), ModItems.getBasicModItemProperties());
+            () -> new OreberryBushBlock(Items.RAW_GOLD), getBasicModItemProperties());
 
     private static <T extends Block> RegistryObject<T> registerNoItem(String name, Supplier<T> block) {
         return Registration.BLOCKS.register(name, block);
@@ -29,4 +29,8 @@ public class ModBlocks {
 
     // Call this method to load the static class.
     public static void register() {}
+
+    public static Item.Properties getBasicModItemProperties() {
+        return new Item.Properties().tab(ModCreativeModeTabs.SWEETER_OREBERRIES_ITEM_GROUP);
+    }
 }
