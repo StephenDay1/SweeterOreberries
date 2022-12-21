@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "sweeteroreberries:blocks/gold_oreberry_bush_stage0",
+    "particle": "sweeteroreberries:blocks/gold_oreberry_bush_stage0"
+  }
+}

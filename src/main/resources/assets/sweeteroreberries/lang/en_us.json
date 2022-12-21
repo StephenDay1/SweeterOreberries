@@ -1,0 +1,9 @@
+{
+  "block.sweeteroreberries.iron_oreberry_bush": "Iron Oreberries",
+  "block.sweeteroreberries.gold_oreberry_bush": "Gold Oreberries",
+  "block.sweeteroreberries.copper_oreberry_bush": "Copper Oreberries",
+  "itemGroup.sweeter_oreberries": "Oreberries",
+
+  "death.attack.oreberryBush": "%1$s was poked to death by an oreberry bush",
+  "death.attack.oreberryBush.player": "%1$s was poked to death by an oreberry bush whilst trying to escape %2$s"
+}

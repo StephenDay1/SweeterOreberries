@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "sweeteroreberries:blocks/copper_oreberry_bush_stage3",
+    "particle": "sweeteroreberries:blocks/copper_oreberry_bush_stage3"
+  }
+}
